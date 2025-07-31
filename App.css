@@ -1,0 +1,233 @@
+/* smartphone-image-styles.css */
+
+/* Base Styling */
+body {
+  background-color: #f4f6f8;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  margin: 0;
+  padding: 0;
+  color: #333;
+}
+
+.container {
+  padding: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+h1, h2, h3 {
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: bold;
+  text-align: center;
+  color: #056af7;
+}
+
+h1 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+h2 {
+  font-size: 1.5rem;
+  margin: 1.5rem 0;
+  color: #333;
+}
+
+h3 {
+  font-size: 1.3rem;
+}
+
+/* Form & Card Style */
+form,
+.card,
+.chart-wrapper {
+  background: #fff;
+  padding: 1.5rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+  margin-bottom: 2rem;
+}
+
+input[type="file"],
+select {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  margin-bottom: 1rem;
+  font-size: 1rem;
+}
+
+button {
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 6px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  background-color: #3b82f6;
+  color: white;
+  margin: 0.5rem 0.5rem 0 0;
+}
+
+/* Button Colors */
+.button-blue {
+  background-color: #3b82f6;
+}
+
+.button-blue:hover {
+  background-color: #2563eb;
+}
+
+.button-green {
+  background-color: #10b981;
+}
+
+.button-green:hover {
+  background-color: #059669;
+}
+
+.button-red {
+  background-color: #ef4444;
+}
+
+.button-red:hover {
+  background-color: #dc2626;
+}
+
+.button-yellow {
+  background-color: #f59e0b;
+  color: #fff;
+}
+
+.button-yellow:hover {
+  background-color: #d97706;
+}
+
+/* Chart Buttons */
+#csv {
+  background-color: #14be61;
+  color: white;
+  height: 90%;
+}
+
+#pdf {
+  background-color: #dc2626;
+}
+
+#png {
+  background-color: #facc15;
+  color: black;
+}
+
+/* Brand Filter Dropdown */
+#brand-filter {
+  width: 100%;
+  max-width: 250px;
+  padding: 0.75rem;
+  margin-top: 1rem;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+}
+
+/* Image Styling */
+img {
+  height: 70%;
+  width: 70%;
+  border-radius: 6px;
+  border: 1px solid #e5e7eb;
+}
+
+/* Gallery */
+.image-gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+}
+
+/* Card for each image */
+.image-card {
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+  padding: 1rem;
+  text-align: center;
+}
+
+
+
+/* Metrics Display */
+.metric-display p {
+  font-size: 0.95rem;
+  margin: 0.25rem 0;
+  font-weight: bold;
+}
+
+/* Controls Section */
+.controls {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+/* Responsive Adjustments */
+@media screen and (max-width: 768px) {
+  .container {
+    padding: 1rem;
+  }
+
+  form, .chart-wrapper, .card {
+    padding: 2rem;
+    width: 70%;
+  }
+
+  h1 {
+    font-size: 1.5rem;
+  }
+
+  h2 {
+    font-size: 1.25rem;
+  }
+  #brand-filter {
+  width: 50%;
+  max-width: 250px;
+  padding: 0.75rem;
+  margin-top: 1rem;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  position: relative;
+  left: 20%;
+}
+
+  .controls {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  button {
+    width: 50%;
+    position: relative;
+    left: 5%;
+  }
+  .image-card {
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+  padding: 1rem;
+  text-align: center;
+  width: 80%;
+  height: 100%;
+}
+.chart-wrapper {
+  background: #fff;
+  padding: 1.5rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+  margin-bottom: 2rem;
+  width: 100%;
+}
+
+
+}
