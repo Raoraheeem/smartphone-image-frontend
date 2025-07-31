@@ -24,6 +24,9 @@ function App() {
   const [selectedBrand, setSelectedBrand] = useState('All');
   const chartRef = useRef(null);
 
+  // ✅ Live backend base URL from env
+  const apiBaseUrl = process.env.REACT_APP_API_URL;
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (!image) return alert('Please select an image');
@@ -33,7 +36,7 @@ function App() {
     formData.append('brand', brand);
 
     try {
-      const res = await axios.post('http://localhost:5000/upload', formData);
+      const res = await axios.post(`${apiBaseUrl}/upload`, formData);
       setMessage(res.data.message);
       setImage(null);
       fetchImages();
@@ -45,7 +48,7 @@ function App() {
 
   const fetchImages = async () => {
     try {
-      const res = await axios.get('http://localhost:5000/images');
+      const res = await axios.get(`${apiBaseUrl}/images`);
       setImages(res.data);
     } catch (err) {
       console.error('Failed to fetch images', err);
@@ -59,7 +62,7 @@ function App() {
   const analyzeImage = async (img) => {
     try {
       const filenameWithoutPrefix = img.filename.replace(/^processed-/, '');
-      const res = await axios.get(`http://localhost:5000/analyze/processed/${filenameWithoutPrefix}`);
+      const res = await axios.get(`${apiBaseUrl}/analyze/processed/${filenameWithoutPrefix}`);
       setAnalysis((prev) => ({
         ...prev,
         [img.filename]: res.data.metrics,
@@ -78,7 +81,7 @@ function App() {
       const filenameWithoutPrefix = filename.replace(/^processed-/, '');
 
       try {
-        const res = await axios.get(`http://localhost:5000/analyze/processed/${filenameWithoutPrefix}`);
+        const res = await axios.get(`${apiBaseUrl}/analyze/processed/${filenameWithoutPrefix}`);
         const variance = parseFloat(res.data.metrics.variance);
         const mean = parseFloat(res.data.metrics.mean);
         const contrastEstimate = parseFloat(res.data.metrics.contrastEstimate);
@@ -163,7 +166,6 @@ function App() {
         {brandSharpness.length > 0 && (
           <CSVLink data={brandSharpness} filename="sharpness-report.csv" >
             <button id='csv'> 📥 Export CSV</button>
-           
           </CSVLink>
         )}
         <select id='brand-filter' value={selectedBrand} onChange={(e) => setSelectedBrand(e.target.value)}>
@@ -205,11 +207,11 @@ function App() {
             <div className="flex-wrap">
               <div>
                 <p>Original</p>
-                <img src={`http://localhost:5000/uploads/${img.originalName}`} alt="original" />
+                <img src={`${apiBaseUrl}/uploads/${img.originalName}`} alt="original" />
               </div>
               <div>
                 <p>Processed</p>
-                <img src={`http://localhost:5000/uploads/${img.filename}`} alt="processed" />
+                <img src={`${apiBaseUrl}/uploads/${img.filename}`} alt="processed" />
               </div>
             </div>
             <button onClick={() => analyzeImage(img)} className="btn blue">Analyze</button>
